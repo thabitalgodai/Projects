@@ -1,0 +1,57 @@
+/* Global foundation for the RTL application. */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  min-width: 280px;
+  height: 100%;
+  min-height: 100%;
+  margin: 0;
+}
+
+html,
+body {
+  direction: rtl;
+}
+
+body {
+  overflow: hidden;
+  background: #f5f1ff;
+  color: #211936;
+  font-family: "Nunito", "Noto Sans Arabic", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+input,
+textarea {
+  direction: rtl;
+  text-align: right;
+}
+
+button {
+  direction: rtl;
+  font: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid rgba(94, 53, 177, 0.45);
+  outline-offset: 2px;
+}
+
+@supports (height: 100dvh) {
+  html,
+  body,
+  #root {
+    min-height: 100dvh;
+  }
+}

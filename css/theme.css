@@ -1,0 +1,386 @@
+/*
+ * 1001 — Purple Glass Theme
+ * Presentation-only overrides. Application logic and existing component
+ * classes remain untouched so the React bundle keeps its original behavior.
+ */
+
+:root {
+  color-scheme: light;
+  --brand: #5E35B1;
+  --brand-strong: #45228E;
+  --brand-deep: #32166F;
+  --brand-mid: #7652C8;
+  --brand-soft: #EDE7F6;
+  --brand-wash: #F8F5FF;
+  --ink: #211936;
+  --ink-soft: #4F4763;
+  --muted: #70697F;
+  --surface: rgba(255, 255, 255, 0.92);
+  --surface-solid: #FFFFFF;
+  --surface-tint: rgba(246, 242, 252, 0.92);
+  --line: rgba(94, 53, 177, 0.15);
+  --line-strong: rgba(94, 53, 177, 0.24);
+  --shadow-soft: 0 8px 24px rgba(50, 22, 111, 0.08);
+  --shadow-card: 0 14px 34px rgba(50, 22, 111, 0.11);
+  --shadow-brand: 0 12px 28px rgba(94, 53, 177, 0.25);
+}
+
+/* Viewport foundation */
+html,
+body,
+#root {
+  width: 100%;
+  min-width: 280px;
+  height: 100%;
+  min-height: 100dvh;
+  overflow: hidden;
+
+  background:
+    radial-gradient(circle at 15% 10%, rgba(94, 53, 177, 0.16), transparent 32%),
+    radial-gradient(circle at 85% 85%, rgba(124, 77, 255, 0.12), transparent 35%),
+    linear-gradient(135deg, #FAF8FF 0%, #F3EEFF 50%, #EDE7F8 100%);
+}
+
+.raml-app {
+  width: min(100%, 402px) !important;
+  max-width: 402px !important;
+  height: 100vh !important;
+  height: 100dvh !important;
+  min-height: 0 !important;
+  margin-inline: auto !important;
+  overflow: hidden !important;
+  color: var(--ink) !important;
+  background:
+    radial-gradient(circle at 82% 6%, rgba(118, 82, 200, 0.10), transparent 28%),
+    radial-gradient(circle at 12% 70%, rgba(224, 213, 247, 0.34), transparent 32%),
+    linear-gradient(160deg, #FBF9FF 0%, #F4EFFB 52%, #FAF8FF 100%) !important;
+}
+
+.main,
+.home-stage {
+  min-height: 0;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  overscroll-behavior-y: contain;
+  scrollbar-width: none;
+}
+
+.main::-webkit-scrollbar,
+.home-stage::-webkit-scrollbar,
+.toolbar-dropdown::-webkit-scrollbar,
+.sheet::-webkit-scrollbar {
+  display: none;
+}
+
+.home-stage {
+  flex: 1 1 auto;
+  padding-bottom: max(12px, env(safe-area-inset-bottom, 0px));
+}
+
+/* Main daily card */
+.home-daily-card {
+  border: 1px solid rgba(94, 53, 177, 0.10) !important;
+  border-radius: 24px !important;
+  background:
+    radial-gradient(circle at 88% 12%, rgba(255, 255, 255, 0.72), transparent 26%),
+    linear-gradient(145deg, #EDE7F6 0%, #F8F5FF 52%, #E8E0F6 100%) !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.92),
+    0 14px 32px rgba(50, 22, 111, 0.10) !important;
+}
+
+/* Home shortcuts: four original actions, same handlers, clearer hierarchy */
+.home-shortcuts {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 7px;
+  width: 350px;
+  max-width: calc(100% - 40px);
+  margin: 14px auto 0;
+  padding: 8px;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.76);
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.home-shortcut {
+  position: relative;
+  display: flex;
+  min-width: 0;
+  min-height: 58px;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 8px 4px;
+  border: 1px solid transparent;
+  border-radius: 15px;
+  background: linear-gradient(180deg, rgba(255,255,255,.78), rgba(247,243,253,.66));
+  color: var(--ink);
+  font-size: 11.5px;
+  font-weight: 800;
+  line-height: 1.35;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 160ms ease, background 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.home-shortcut:hover {
+  border-color: var(--line-strong);
+  background: linear-gradient(145deg, #F7F2FD, #EDE6F8);
+  box-shadow: 0 6px 16px rgba(50, 22, 111, 0.08);
+}
+
+.home-shortcut:active {
+  transform: translateY(1px) scale(.985);
+}
+
+.home-shortcut:focus-visible {
+  outline: 3px solid rgba(94, 53, 177, 0.28);
+  outline-offset: 2px;
+}
+
+.home-shortcut-icon {
+  flex: 0 0 auto;
+  font-size: 18px;
+  line-height: 1;
+  filter: drop-shadow(0 2px 4px rgba(50, 22, 111, 0.10));
+}
+
+/* Primary draw action */
+.primary-draw-button {
+  border: 1px solid rgba(50, 22, 111, 0.20) !important;
+  background: linear-gradient(110deg, #4A2490 0%, #5E35B1 48%, #7956C8 100%) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.20),
+    0 10px 26px rgba(69, 34, 142, 0.28) !important;
+  transition: transform 160ms ease, box-shadow 160ms ease, filter 160ms ease !important;
+}
+
+.primary-draw-button:not(:disabled):hover {
+  filter: brightness(1.035);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.22),
+    0 14px 30px rgba(69, 34, 142, 0.32) !important;
+}
+
+.primary-draw-button:not(:disabled):active {
+  transform: translateY(1px);
+}
+
+.primary-draw-button:disabled {
+  opacity: 0.72;
+}
+
+/*
+ * Dropdown safety:
+ * Fixed positioning removes the menu from clipped cards/stages. Width and
+ * height are bounded by the actual viewport, including safe-area insets.
+ */
+.toolbar-dropdown {
+  z-index: 600 !important;
+  width: min(196px, calc(100vw - 24px)) !important;
+  max-width: calc(100vw - 24px) !important;
+  max-height: calc(100dvh - 108px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px)) !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  overscroll-behavior: contain;
+  border: 1px solid var(--line) !important;
+  border-radius: 16px !important;
+  background: rgba(255, 255, 255, 0.98) !important;
+  box-shadow: 0 18px 44px rgba(35, 19, 67, 0.20) !important;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.toolbar-dropdown--view,
+.toolbar-dropdown--method {
+  position: fixed !important;
+  top: max(12px, calc(env(safe-area-inset-top, 0px) + 84px)) !important;
+  right: max(12px, calc((100vw - 402px) / 2 + 12px)) !important;
+  left: auto !important;
+}
+
+.toolbar-dropdown--tools {
+  position: fixed !important;
+  top: auto !important;
+  right: max(12px, calc((100vw - 402px) / 2 + 12px)) !important;
+  bottom: max(12px, calc(env(safe-area-inset-bottom, 0px) + 78px)) !important;
+  left: auto !important;
+  max-height: calc(100dvh - 108px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px)) !important;
+}
+
+/* Modal/sheet surfaces */
+.overlay {
+  z-index: 700 !important;
+  padding-top: max(8px, env(safe-area-inset-top, 0px));
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+.sheet {
+  max-height: calc(100dvh - max(16px, env(safe-area-inset-top, 0px)) - max(12px, env(safe-area-inset-bottom, 0px))) !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  overscroll-behavior: contain;
+  background: linear-gradient(180deg, #FFFFFF 0%, #FAF8FF 100%) !important;
+  color: var(--ink);
+  scrollbar-width: none;
+}
+
+/* Small phones */
+@media (max-width: 380px) {
+  .home-shortcuts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 7px;
+    margin-top: 12px;
+    padding: 7px;
+  }
+
+  .home-shortcut {
+    min-height: 52px;
+    font-size: 12.5px;
+  }
+
+  .primary-draw-button {
+    margin-top: 12px !important;
+  }
+
+  .toolbar-dropdown {
+    width: min(196px, calc(100vw - 20px)) !important;
+    max-width: calc(100vw - 20px) !important;
+  }
+
+  .toolbar-dropdown--view,
+  .toolbar-dropdown--method,
+  .toolbar-dropdown--tools {
+    right: 10px !important;
+  }
+}
+
+/* Very short landscape screens */
+@media (max-height: 540px) and (orientation: landscape) {
+  .home-stage {
+    padding-top: 4px;
+  }
+
+  .home-shortcuts {
+    margin-top: 8px;
+  }
+
+  .home-shortcut {
+    min-height: 44px;
+    padding-block: 5px;
+  }
+
+  .toolbar-dropdown--view,
+  .toolbar-dropdown--method {
+    top: max(8px, calc(env(safe-area-inset-top, 0px) + 52px)) !important;
+  }
+
+  .toolbar-dropdown--tools {
+    bottom: max(8px, calc(env(safe-area-inset-bottom, 0px) + 56px)) !important;
+  }
+
+  .toolbar-dropdown {
+    max-height: calc(100dvh - 72px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px)) !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+
+/* ===== تخصيص الخلفية الرئيسية ===== */
+html, body, #root {
+  background: #لونك-المفضل !important;
+}
+
+.raml-app {
+  background:
+    radial-gradient(circle at 15% 15%, rgba(180, 140, 240, 0.18), transparent 45%),
+    radial-gradient(circle at 85% 85%, rgba(240, 160, 200, 0.15), transparent 45%),
+    linear-gradient(135deg, #FAF7FF 0%, #F2EBFF 50%, #FFF5FA 100%) !important;
+} 
+
+
+/* ===== خلفية البطاقة العلوية ===== */
+.home-daily-card {
+  background:
+    radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.85) 0%, transparent 55%),
+    linear-gradient(135deg, #F8F3FF 0%, #EFE4FF 40%, #F5EAFF 70%, #FCF6FF 100%) !important;
+  border: 1.5px solid #7956C8 !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.92),
+    0 14px 32px rgba(94, 53, 177, 0.18) !important;
+} 
+
+
+/* ===== أزرار التنقل في صفحة التخت ===== */
+
+/* زر الفرز - عند التفعيل */
+.toolbar-dropdown ~ button[style*="color: rgb(113, 96, 155)"],
+.toolbar-dropdown ~ button[style*="color:#71609B"] {
+  background: linear-gradient(135deg, #C08090, #C98A91) !important;
+  color: #FFFFFF !important;
+  border-radius: 18px !important;
+  box-shadow: 0 6px 16px rgba(201, 138, 145, 0.40) !important;
+}
+
+/* جميع أزرار الشريط السفلي عند التفعيل */
+button[style*="color: rgb(113, 96, 155)"],
+button[style*="color:#71609B"] {
+  background: linear-gradient(135deg, #C08090, #C98A91) !important;
+  color: #FFFFFF !important;
+  border-radius: 18px !important;
+  box-shadow: 0 6px 16px rgba(201, 138, 145, 0.40) !important;
+  transition: all .2s ease !important;
+}
+
+
+/* ===== فوتر الصفحة الرئيسية ===== */
+/* ===== فوتر الصفحة الرئيسية ===== */
+.app-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  padding: 20px 16px max(12px, env(safe-area-inset-bottom, 0px));
+  font-family: "Nunito", "Noto Sans Arabic", system-ui, sans-serif;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #7956C8;
+  letter-spacing: 0.5px;
+  background: linear-gradient(180deg, transparent 0%, rgba(255, 255, 255, 0.65) 100%);
+  pointer-events: none;
+  z-index: 100;
+  direction: rtl;
+}
+
+/* ===== إظهار الفوتر في الصفحة الرئيسية فقط ===== */
+
+/* الافتراضي: مخفي */
+.app-footer {
+  display: none !important;
+}
+
+/* يظهر فقط عندما تكون الصفحة الرئيسية موجودة */
+body:has(.home-stage) .app-footer,
+body:has(.home-shortcuts) .app-footer {
+  display: block !important;
+}
+
+/* إخفاء إذا كانت صفحة التخت نشطة */
+body:has(.shield-frame) .app-footer,
+body:has(.house-square) .app-footer {
+  display: none !important;
+}
